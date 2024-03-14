@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bt</title>
+</head>
+<body>
+
+    <div id="search-container">
+        <div id="search-icon" onclick="toggleSearchBar()">&#128269;</div>
+        <input type="text" id="search-bar" placeholder="Search..." style="display: none;">
+      </div>
+<script>
+    function toggleSearchBar() {
+    const searchBar = document.getElementById("search-bar");
+    searchBar.style.display = searchBar.style.display === "none" ? "block" : "none";
+  }
+</script>
+</body>
+</html>

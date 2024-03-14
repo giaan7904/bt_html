@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bt3</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        #container {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+        #cover-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+        #centered-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4em;
+            color: white;
+            opacity: 0;
+            transition: opacity 2s ease, transform 2s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img id="cover-image" src="/anh/z5247289420064_71dc3d693a7ed4ba232205924809ebe8.jpg" alt="Cover Image">
+        <div id="centered-text">0%</div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const coverImage = document.getElementById('cover-image');
+    const centeredText = document.getElementById('centered-text');
+    
+   
+    function fadeIn() {
+        coverImage.style.opacity = 1;
+        centeredText.style.opacity = 1;
+    }
+
+   
+    coverImage.style.opacity = 0;
+    centeredText.style.opacity = 0;
+
+
+    setTimeout(fadeIn, 2000); 
+
+ 
+    let count = 0;
+    const maxCount = 100;
+    const increment = maxCount / 100; 
+
+    function updateText() {
+        centeredText.textContent = count + '%';
+        count += increment;
+        if (count <= maxCount) {
+            setTimeout(updateText, 20); 
+        } else {
+            centeredText.style.opacity = 0;
+        }
+    }
+    updateText();
+});
+
+    </script>
+</body>
+</html>

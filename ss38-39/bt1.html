@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        #thanh-tien-trinh {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        .buoc {
+            width: 30px;
+            height: 30px;
+            border: 2px solid #0074D9;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 16px;
+            color: #0074D9;
+
+        }
+
+        .active {
+            background-color: #0074D9;
+            color: white;
+
+        }
+
+
+        #nutTruoc,
+        #nutTiepTheo {
+            background-color: #0074D9;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        #nutTruoc:disabled,
+        #nutTiepTheo:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="thanh-tien-trinh">
+        <div class="buoc active"></div>
+        <div class="buoc"></div>
+        <div class="buoc"></div>
+        <div class="buoc"></div>
+    </div>
+
+    <button id="nutTruoc" onclick="diChuyen(-1)" disabled>Trước</button>
+    <button id="nutTiepTheo" onclick="diChuyen(1)">Tiếp theo</button>
+
+    <script>
+        let buocHienTai = 0;
+        const cacBuoc = document.querySelectorAll('.buoc');
+
+        function diChuyen(buoc) {
+            if (buocHienTai + buoc >= 0 && buocHienTai + buoc <= cacBuoc.length - 1) {
+                buocHienTai += buoc;
+                capNhatBuoc();
+            }
+        }
+
+        function capNhatBuoc() {
+            for (let i = 0; i <= buocHienTai; i++) {
+                cacBuoc[i].classList.add('active');
+            }
+
+            document.getElementById('nutTruoc').disabled = buocHienTai === 0;
+            document.getElementById('nutTiepTheo').disabled = buocHienTai === cacBuoc.length - 1;
+        }
+
+        capNhatBuoc();
+    </script>
+
+</body>
+
+</html>
